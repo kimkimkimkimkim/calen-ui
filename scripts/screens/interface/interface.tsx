@@ -1,3 +1,4 @@
+/*
 import { NavigationScreenProp, NavigationState, NavigationParams } from "react-navigation";
 import TimelineData from "../../data/client/TimelineData";
 import { IStateToProps, IDispatchToProps } from "../../../redux/interface";
@@ -39,3 +40,4 @@ interface IState{
 export type Props = IProps & IStateToProps & IDispatchToProps;
 export type State = IState & NavigationPropsForState;
 export type TimelineCommentDetailScreenNavigationRequest = NavigationProps & NavigationPropsForState;
+*/

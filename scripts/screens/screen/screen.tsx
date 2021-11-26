@@ -1,3 +1,4 @@
+/*
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Text, TouchableOpacity, View, ScrollView } from "react-native";
@@ -42,7 +43,6 @@ class TimelineCommentDetailScreen extends Component<Props, State>{
 
     return(
       <ScrollView style={{flex:1,backgroundColor:"#EEEEF0"}}>
-        {/* 親タイムライン */}
         {this.state.parentTimelineDataList.map((timeline,index) => {
           return (
             <TimelineComponent
@@ -57,29 +57,23 @@ class TimelineCommentDetailScreen extends Component<Props, State>{
         })}
         <View style={{backgroundColor:"white",padding:12}}>
           <View style={{flexDirection:"row",alignItems:"center"}}>
-            {/* アバターアイコン */}
             <AvatarIconComponent
               source = {{uri: this.state.creatorUserData.iconUrl}}
             />
-            {/* ユーザー名 */}
             <Text>{this.state.creatorUserData.name}</Text>
             <View style={{flex:1}}/>
             <View style={{alignItems:"flex-end"}}>
-              {/* メニューアイコン */}
               <IconComponent iconType="triangle_arrow_down"/>
-              {/* 何分前かなどのテキスト */}
               <Text>{TextUtil.GetTimelineAgoText(this.state.commentData.createdAt)}</Text>
             </View>
           </View>
           <View style={{height:4}}/>
           <Divider />
           <View style={{height:4}}/>
-          {/* コメント */}
           <Text>{this.state.commentData.text}</Text>
         </View>
         <View style={{height:4}}/>
         <View style={{flexDirection:"row",backgroundColor:"white",height:40,alignItems:"center"}}>
-          {/* いいね */}
           <TouchableOpacity
             style={{flexDirection:"row"}}
             onPress={() => this.onLikeButtonPress()}
@@ -88,7 +82,6 @@ class TimelineCommentDetailScreen extends Component<Props, State>{
             <Text style={{color: likeTextColor}}>{this.state.timelineData.likeUserIdArray.length}</Text>
           </TouchableOpacity>
           <View style={{width:50}}/>
-          {/* コメント */}
           <TouchableOpacity
             style={{flexDirection:"row"}}
             onPress={() => NavigationManager.NavigatePostCommentScreen(this.props.navigation.state.params.stackOnMainTabNavigation, {
@@ -100,7 +93,6 @@ class TimelineCommentDetailScreen extends Component<Props, State>{
           </TouchableOpacity>
         </View>
         <View style={{height:4}}/>
-        {/* コメントコンポーネント */}
         {this.state.replyList.map((timeline,index) => {
           let parentTimelineList = this.state.parentTimelineDataList.slice()
           parentTimelineList.push(this.state.timelineData)
@@ -161,3 +153,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(TimelineCommentDetailScreen);
+*/

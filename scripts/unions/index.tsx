@@ -1,0 +1,2 @@
+// アイコンタイプ
+export type IconType = "";
