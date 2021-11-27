@@ -30,6 +30,9 @@ export default class App extends Component {
                   return focused ? <Ionicons name={"document-text"} size={size} color={color} /> : <Ionicons name={"document-text-outline"} size={size} color={color} />;
               }
             },
+            headerTitleStyle: {color: Config.color.textBlack },
+            headerStyle: {elevation: 0, shadowOpacity: 0},
+            tabBarStyle: {elevation: 0, shadowOpacity: 0},
           })}
         >
           <Tab.Screen 

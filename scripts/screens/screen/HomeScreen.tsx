@@ -10,11 +10,13 @@ export default class HomeScreen extends Component<Props, State> {
   render(){
     return(
       <Tab.Navigator
+        initialRouteName = "Calendar"
         screenOptions={{
           tabBarActiveTintColor: Config.color.white,
           tabBarInactiveTintColor: Config.color.textGray,
           tabBarIndicatorStyle: { backgroundColor:Config.color.main, height:28, marginBottom:10, borderRadius:14},
           tabBarLabelStyle:{ fontSize:Config.fontSize.regular, width:100, fontWeight:"bold"},
+          tabBarStyle: { elevation: 0, shadowOpacity: 0}
         }}
       >
         <Tab.Screen 
