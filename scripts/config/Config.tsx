@@ -12,16 +12,22 @@ export default class Config {
     iconGray: "#C2B9B0",
     backgroundWhite: "#FEFEFE",
     backgroundGray: "#F7F7F7",
-    borderGray: "#F7F7F7"
+    borderGray: "#F7F7F7",
+    eventRed:"#E73B3B",
+    eventBlue:"#47B2F7",
+    eventGreen:"#2ECC87",
+    eventYellow:"#FDC02D",
+    eventPurple:"#B38BDB",
   }
 
   // 幅
   static width = {
-    border: 0.2
+    border: 0.5
   }
 
   // フォントサイズ
   static fontSize = {
+    small: 10,
     regular: 12,
   }
 

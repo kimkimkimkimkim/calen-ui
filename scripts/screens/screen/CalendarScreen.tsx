@@ -6,7 +6,135 @@ import { WeekOfDate } from "../../unions";
 
 const CALENDAR_HEADER_HEIGHT = 40;
 const CALENDAR_WOD_HEIGHT = 40;
-const CALENDAR_MARGIN = 8;
+const CALENDAR_MARGIN = 12;
+
+const eventList: Array<EventInfo> = [
+  {
+    date: new Date(2021, 10, 28),
+    title: "予定1",
+    color: Config.color.eventRed,
+  },
+  {
+    date: new Date(2021, 10, 12),
+    title: "予定2",
+    color: Config.color.eventBlue,
+  },
+  {
+    date: new Date(2021, 10, 2),
+    title: "予定3",
+    color: Config.color.eventGreen,
+  },
+  {
+    date: new Date(2021, 10, 12),
+    title: "予定4",
+    color: Config.color.eventPurple,
+  },
+  {
+    date: new Date(2021, 10, 30),
+    title: "予定5",
+    color: Config.color.eventYellow,
+  },
+  {
+    date: new Date(2021, 11, 28),
+    title: "予定1",
+    color: Config.color.eventRed,
+  },
+  {
+    date: new Date(2021, 11, 12),
+    title: "予定2",
+    color: Config.color.eventBlue,
+  },
+  {
+    date: new Date(2021, 11, 2),
+    title: "予定3",
+    color: Config.color.eventGreen,
+  },
+  {
+    date: new Date(2021, 11, 12),
+    title: "予定4",
+    color: Config.color.eventPurple,
+  },
+  {
+    date: new Date(2021, 11, 30),
+    title: "予定5",
+    color: Config.color.eventYellow,
+  },
+  {
+    date: new Date(2022, 0, 28),
+    title: "予定1",
+    color: Config.color.eventRed,
+  },
+  {
+    date: new Date(2022, 0, 12),
+    title: "予定2",
+    color: Config.color.eventBlue,
+  },
+  {
+    date: new Date(2022, 0, 2),
+    title: "予定3",
+    color: Config.color.eventGreen,
+  },
+  {
+    date: new Date(2022, 0, 12),
+    title: "予定4",
+    color: Config.color.eventPurple,
+  },
+  {
+    date: new Date(2022, 0, 30),
+    title: "予定5",
+    color: Config.color.eventYellow,
+  },
+  {
+    date: new Date(2022, 1, 28),
+    title: "予定1",
+    color: Config.color.eventRed,
+  },
+  {
+    date: new Date(2022, 1, 12),
+    title: "予定2",
+    color: Config.color.eventBlue,
+  },
+  {
+    date: new Date(2022, 1, 2),
+    title: "予定3",
+    color: Config.color.eventGreen,
+  },
+  {
+    date: new Date(2022, 1, 12),
+    title: "予定4",
+    color: Config.color.eventPurple,
+  },
+  {
+    date: new Date(2022, 1, 30),
+    title: "予定5",
+    color: Config.color.eventYellow,
+  },
+  {
+    date: new Date(2022, 2, 28),
+    title: "予定1",
+    color: Config.color.eventRed,
+  },
+  {
+    date: new Date(2022, 2, 12),
+    title: "予定2",
+    color: Config.color.eventBlue,
+  },
+  {
+    date: new Date(2022, 2, 2),
+    title: "予定3",
+    color: Config.color.eventGreen,
+  },
+  {
+    date: new Date(2022, 2, 12),
+    title: "予定4",
+    color: Config.color.eventPurple,
+  },
+  {
+    date: new Date(2022, 2, 30),
+    title: "予定5",
+    color: Config.color.eventYellow,
+  },
+]
 
 export default class CalendarScreen extends Component<Props, State>{
   constructor(props: Props){
@@ -41,8 +169,19 @@ export default class CalendarScreen extends Component<Props, State>{
   }
 
   renderCalendar(): JSX.Element[]{
-    var dateList = [new Date(2021, 11,27), new Date(2021, 12), new Date(2022, 1), new Date(2022, 2)]
-    return dateList.map(d => this.renderMonthCalendar(d));
+    var monthList = this.getMonthList();
+    return monthList.map(d => this.renderMonthCalendar(d));
+  }
+
+  getMonthList(): Array<Date>{
+    let monthList: Array<Date> = [];
+    for(let i=0;i<5;i++){
+      let d = new Date();
+      d.setDate(1);
+      d.setMonth(d.getMonth() + i);
+      monthList.push(d);
+    }
+    return monthList;
   }
 
   renderMonthCalendar(date: Date): JSX.Element{
@@ -51,7 +190,20 @@ export default class CalendarScreen extends Component<Props, State>{
         style = {{width:Config.screen.width, height:this.state.viewPortHeight}}
       >
         <View
-          style = {{flex:1, margin:CALENDAR_MARGIN, backgroundColor:Config.color.backgroundWhite}}
+          style = {{
+            flex:1, 
+            margin:CALENDAR_MARGIN, 
+            backgroundColor:Config.color.backgroundWhite, 
+            borderRadius:12,
+            shadowColor: "#CCC",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
+          }}
         >
           {this.renderCalendarHeader(date)}
           {this.renderCalendarWeekOfDate()}
@@ -63,12 +215,12 @@ export default class CalendarScreen extends Component<Props, State>{
 
   renderCalendarHeader(date: Date): JSX.Element{
     return(
-      <View style = {{flexDirection:"row", alignItems:"center", width:"100%", height:CALENDAR_HEADER_HEIGHT}}>
+      <View style = {{flexDirection:"row", alignItems:"center", width:"100%", height:CALENDAR_HEADER_HEIGHT, paddingTop:12}}>
         <View style = {{width:60}}>
-          <Text style = {{color: Config.color.textBlack}}>今日</Text>
+          <Text style = {{color: Config.color.textBlack, fontWeight: "bold", marginLeft: 12}}>今日</Text>
         </View>
         <View style = {{flex:1, alignItems:"center"}}>
-          <Text style = {{color: Config.color.textBlack}}>{date.getFullYear()}年{date.getMonth()+1}月</Text>
+          <Text style = {{color: Config.color.textBlack, fontWeight: "bold"}}>{date.getFullYear()}年{date.getMonth()+1}月</Text>
         </View>
         <View style = {{width:60}}>
         </View>
@@ -92,50 +244,54 @@ export default class CalendarScreen extends Component<Props, State>{
   }
 
   renderCalendarDate(date: Date): JSX.Element{
+    var dateList: Array<Date> = this.getDateList(date);
     var containerHeight = this.state.viewPortHeight - (CALENDAR_MARGIN * 2) - CALENDAR_HEADER_HEIGHT - CALENDAR_WOD_HEIGHT;
-    var height = containerHeight/4;
-    var width = (Config.screen.width - (CALENDAR_MARGIN*2))/7 - 1;
-    var dateList: Array<Date> = [
-      new Date(date.getFullYear(), date.getMonth()+1, 1),
-      new Date(date.getFullYear(), date.getMonth()+1, 2),
-      new Date(date.getFullYear(), date.getMonth()+1, 3),
-      new Date(date.getFullYear(), date.getMonth()+1, 4),
-      new Date(date.getFullYear(), date.getMonth()+1, 5),
-      new Date(date.getFullYear(), date.getMonth()+1, 6),
-      new Date(date.getFullYear(), date.getMonth()+1, 7),
-      new Date(date.getFullYear(), date.getMonth()+1, 8),
-      new Date(date.getFullYear(), date.getMonth()+1, 9),
-      new Date(date.getFullYear(), date.getMonth()+1, 10),
-      new Date(date.getFullYear(), date.getMonth()+1, 11),
-      new Date(date.getFullYear(), date.getMonth()+1, 12),
-      new Date(date.getFullYear(), date.getMonth()+1, 13),
-      new Date(date.getFullYear(), date.getMonth()+1, 14),
-      new Date(date.getFullYear(), date.getMonth()+1, 15),
-      new Date(date.getFullYear(), date.getMonth()+1, 16),
-      new Date(date.getFullYear(), date.getMonth()+1, 17),
-      new Date(date.getFullYear(), date.getMonth()+1, 18),
-      new Date(date.getFullYear(), date.getMonth()+1, 19),
-      new Date(date.getFullYear(), date.getMonth()+1, 20),
-      new Date(date.getFullYear(), date.getMonth()+1, 21),
-      new Date(date.getFullYear(), date.getMonth()+1, 22),
-      new Date(date.getFullYear(), date.getMonth()+1, 23),
-      new Date(date.getFullYear(), date.getMonth()+1, 24),
-      new Date(date.getFullYear(), date.getMonth()+1, 25),
-      new Date(date.getFullYear(), date.getMonth()+1, 26),
-      new Date(date.getFullYear(), date.getMonth()+1, 27),
-      new Date(date.getFullYear(), date.getMonth()+1, 28),
-    ]
+    var height = containerHeight/(dateList.length / 7);
+    var width = (Config.screen.width - (CALENDAR_MARGIN*2))/7 - 0.01;
     return(
       <View style = {{flex:1, flexDirection:"row", flexWrap:"wrap"}}>
         {dateList.map(d => {
           return(
             <View style = {{width:width, height:height, alignItems:"center", borderTopWidth:Config.width.border, borderColor:Config.color.borderGray}}>
-              <Text style={{fontSize:Config.fontSize.regular}}>{d.getDate()}</Text>
+              <Text style={{fontSize:Config.fontSize.regular, color: this.getDateTextColor(d, date), marginTop:4}}>{d.getDate()}</Text>
+              {this.renderEvent(d)}
             </View>
           )
         })}
       </View>
     )
+  }
+
+  renderEvent(date: Date): JSX.Element[]{
+    return eventList.filter(e => e.date.getFullYear() == date.getFullYear() && e.date.getMonth() == date.getMonth() && e.date.getDate() == date.getDate())
+      .map(e => {
+        let rgb = this.getRgbFromHex(e.color);
+        return (
+          <View style={{width:"100%", height: 18}}>
+            <View style={{flex:1, margin:2, backgroundColor: "rgba("+rgb[0]+","+rgb[1]+","+rgb[2]+",0.05)", borderRadius:2, justifyContent:"center", alignItems:"center"}}>
+              <Text style={{fontSize: Config.fontSize.small, color: e.color}}>{e.title}</Text>
+            </View>
+          </View>
+        )
+      })
+  }
+
+  getDateList(date: Date): Array<Date>{
+    let firstDate = new Date(date.getFullYear(), date.getMonth(), 1); // 対象の月の1日
+    let firstDay = firstDate.getDay();
+    let firstCalendarDate = firstDate.setDate(firstDate.getDate() - firstDay);
+    let lastDate = new Date(date.getFullYear(), date.getMonth()+1, 0);
+    let lastDay = lastDate.getDay();
+    let lastCalendarDate = lastDate.setDate(lastDate.getDate() + 7 - lastDay);
+    var diffDate = (lastCalendarDate - firstCalendarDate) / 86400000;
+
+    let dateList: Array<Date> = [];
+    for(let i=0;i<diffDate;i++){
+      var d = new Date(firstDate);
+      d.setDate(d.getDate() + i);
+      dateList.push(d);
+    }
+    return dateList;
   }
 
   getWodText(wod: WeekOfDate): string{
@@ -169,4 +325,33 @@ export default class CalendarScreen extends Component<Props, State>{
         return Config.color.textGray;
     }
   }
+
+  getDateTextColor(date: Date, calendarDate: Date): string{
+    if(date.getFullYear() != calendarDate.getFullYear() || date.getMonth() != calendarDate.getMonth()) return Config.color.textGray;
+
+    let wod = date.getDay();
+    switch(wod){
+      case 0:
+        return Config.color.red;
+      case 6:
+        return Config.color.blue;
+      default:
+        return Config.color.textBlack;
+    }
+  }
+
+  getRgbFromHex ( hex: string ) : Array<number>{
+    if ( hex.slice(0, 1) == "#" ) hex = hex.slice(1) ;
+    if ( hex.length == 3 ) hex = hex.slice(0,1) + hex.slice(0,1) + hex.slice(1,2) + hex.slice(1,2) + hex.slice(2,3) + hex.slice(2,3) ;
+  
+    return [ hex.slice( 0, 2 ), hex.slice( 2, 4 ), hex.slice( 4, 6 ) ].map( function ( str ) {
+      return parseInt( str, 16 ) ;
+    } ) ;
+  }
+}
+
+interface EventInfo{
+  date: Date,
+  title: string,
+  color: string,
 }
