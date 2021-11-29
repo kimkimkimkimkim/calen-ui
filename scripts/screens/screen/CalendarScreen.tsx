@@ -148,7 +148,7 @@ export default class CalendarScreen extends Component<Props, State>{
   render(): JSX.Element{
     return(
       <View
-        style = {{flex:1, justifyContent:"center", alignItems:"center", backgroundColor: Config.color.backgroundGray}}
+        style = {{flex:1, justifyContent:"center", alignItems:"center", backgroundColor: Config.color.backgroundWhite}}
         onLayout = {this.onLayout}
       >
         <ScrollView
@@ -195,7 +195,7 @@ export default class CalendarScreen extends Component<Props, State>{
             margin:CALENDAR_MARGIN, 
             backgroundColor:Config.color.backgroundWhite, 
             borderRadius:12,
-            shadowColor: "#CCC",
+            shadowColor: "#AAA",
             shadowOffset: {
               width: 0,
               height: 2,

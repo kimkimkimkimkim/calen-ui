@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet} from "react-native"
+import { StyleSheet, TouchableOpacity } from "react-native"
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen, FriendScreen, NotificationScreen, ChatScreen, TimelineScreen } from "./scripts/screens"
@@ -30,24 +30,16 @@ export default class App extends Component {
                   return focused ? <Ionicons name={"document-text"} size={size} color={color} /> : <Ionicons name={"document-text-outline"} size={size} color={color} />;
               }
             },
-            headerTitleStyle: {color: Config.color.textBlack },
-            headerStyle: {elevation: 0, shadowOpacity: 0},
-            tabBarStyle: {elevation: 0, shadowOpacity: 0},
+            headerShown: false,
           })}
         >
           <Tab.Screen 
             name="Home" 
             component={HomeScreen} 
-            options = {{
-              tabBarLabel: "Home",
-            }}
           />
           <Tab.Screen 
             name="Friend" 
             component={FriendScreen} 
-            options = {{
-              tabBarLabel: "フレンド",
-            }}
           />
           <Tab.Screen 
             name="Notification" 
@@ -59,16 +51,10 @@ export default class App extends Component {
           <Tab.Screen 
             name="Chat" 
             component={ChatScreen} 
-            options = {{
-              tabBarLabel: "チャット",
-            }}
           />
           <Tab.Screen 
             name="Timeline" 
             component={TimelineScreen} 
-            options = {{
-              tabBarLabel: "タイムライン",
-            }}
           />
         </Tab.Navigator>
       </NavigationContainer>

@@ -1,4 +1,5 @@
 import { NavigationHelpers, ParamListBase } from "@react-navigation/core";
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 // navigation.navigate()で渡されるProps
 interface NavigationProps {
@@ -19,6 +20,6 @@ interface IProps {
 interface IState{
 }
 
-export type Props = IProps;
+export type Props = IProps & NativeStackNavigationOptions;
 export type State = IState & NavigationPropsForState;
 export type HomeScreenNavigationRequest = NavigationProps & NavigationPropsForState;
