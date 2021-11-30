@@ -29,11 +29,13 @@ export default class Config {
   static fontSize = {
     small: 10,
     regular: 12,
+    big: 14,
     header: 19,
   }
 
   static iconSize = {
     header: 24,
+    timeline: 20,
   }
 
   // 画面サイズ
