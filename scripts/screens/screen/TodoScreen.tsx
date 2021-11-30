@@ -14,7 +14,7 @@ const todoList: Array<TodoInfo> = [
   },
   {
     title: "Todo2",
-    isDone: false,
+    isDone: true,
     deadlineDate: new Date(2021,10,28,9,45),
     avatarSource: require("../../../resources/avatar/1.png"),
   },
