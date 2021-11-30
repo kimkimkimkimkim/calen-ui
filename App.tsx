@@ -36,10 +36,16 @@ export default class App extends Component {
           <Tab.Screen 
             name="Home" 
             component={HomeScreen} 
+            options = {{
+              tabBarLabel: "ホーム",
+            }}
           />
           <Tab.Screen 
             name="Friend" 
             component={FriendScreen} 
+            options = {{
+              tabBarLabel: "フレンド",
+            }}
           />
           <Tab.Screen 
             name="Notification" 
@@ -51,10 +57,16 @@ export default class App extends Component {
           <Tab.Screen 
             name="Chat" 
             component={ChatScreen} 
+            options = {{
+              tabBarLabel: "チャット",
+            }}
           />
           <Tab.Screen 
             name="Timeline" 
             component={TimelineScreen} 
+            options = {{
+              tabBarLabel: "タイムライン",
+            }}
           />
         </Tab.Navigator>
       </NavigationContainer>

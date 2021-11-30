@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, ImageSourcePropType, Image } from "react-native"
+import { View, Text, Image } from "react-native"
 import Config from "../../config/Config"
 import { Avatar } from "react-native-elements"
 import { Ionicons } from "@expo/vector-icons"
