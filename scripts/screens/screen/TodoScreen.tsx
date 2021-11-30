@@ -50,13 +50,13 @@ export default class TodoScreen extends Component {
           renderItem={({item}) => {
             return(
               <View style={{flexDirection:"row", alignItems:"center", padding: PADDING}}>
-                <Ionicons name={item.isDone ? "checkbox-outline" : "square-outline"} color={item.isDone ? Config.color.main : Config.color.iconGray} size={24}/>
+                <Avatar rounded source={item.avatarSource} size={32}/>
                 <View style={{width:PADDING}}/>
                 <Text style={{color:Config.color.textBlack, fontSize:Config.fontSize.big}}>{item.title}</Text>
                 <View style={{flex:1}}/>
-                <Text style={{color:Config.color.iconGray, fontSize:Config.fontSize.small}}>{item.deadlineDate.getMonth()+1}月{item.deadlineDate.getDate()}日{item.deadlineDate.getHours()}:{item.deadlineDate.getMinutes()}</Text>
+                <Text style={{color:Config.color.iconGray, fontSize:Config.fontSize.small}}>{item.deadlineDate.getFullYear()}.{item.deadlineDate.getMonth()+1}.{item.deadlineDate.getDate()} {item.deadlineDate.getHours()}:{item.deadlineDate.getMinutes()}</Text>
                 <View style={{width:PADDING}}/>
-                <Avatar rounded source={item.avatarSource} size={32}/>
+                <Ionicons name={item.isDone ? "checkbox-outline" : "square-outline"} color={item.isDone ? Config.color.main : Config.color.iconGray} size={24}/>
               </View>
             )
           }}
