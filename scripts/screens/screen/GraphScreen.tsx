@@ -93,7 +93,6 @@ const chartConfig: ChartConfig = {
 
 export default class GraphScreen extends Component {
   render(){
-    console.log(this.getRgbFromHex(Config.color.main))
     return(
       <View
         style = {{flex:1, justifyContent:"center", alignItems:"center", backgroundColor: Config.color.backgroundWhite}}

@@ -5,6 +5,7 @@ import { Avatar } from "react-native-elements"
 import { Ionicons } from "@expo/vector-icons"
 import { Props, State} from "../interface/TimelineComponentInterface"
 import { TimelineInfo } from "../../data"
+import ImageGridComponent from "./ImageGridComponent";
 
 const PADDING = 14;
 
@@ -60,10 +61,8 @@ export default class TimelineComponent extends Component<Props, State> {
 
   renderTimelineImage(timeline: TimelineInfo): JSX.Element{
     return(
-      <View style={{flexDirection:"row", flex:1, height:160, marginTop: PADDING, marginLeft:PADDING, marginRight:PADDING, borderRadius:8, overflow:"hidden"}}>
-        <Image source={timeline.imageSourceList[0]} style={{flex:1, height:160}} resizeMode="cover"/>
-        <View style={{width:PADDING/2}}/>
-        <Image source={timeline.imageSourceList[1]} style={{flex:1, height:160}} resizeMode="cover"/>
+      <View style={{flexDirection:"row", flex:1, paddingTop: PADDING, paddingLeft:PADDING, paddingRight:PADDING}}>
+        <ImageGridComponent containerStyle={{height:160, width:Config.screen.width - PADDING*2}} imageSourceList={timeline.imageSourceList}/>
       </View>
     )
   }

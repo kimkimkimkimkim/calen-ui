@@ -4,6 +4,7 @@ import Config from "../../config/Config"
 import { TimelineInfo } from "../../data"
 import { Avatar } from "react-native-elements"
 import { Ionicons } from "@expo/vector-icons"
+import ImageGridComponent from "../../components/component/ImageGridComponent";
 
 const PADDING = 12;
 const memoList: Array<TimelineInfo> = [
@@ -114,10 +115,8 @@ export default class MemoScreen extends Component {
 
   renderMemoImage(memo: TimelineInfo): JSX.Element{
     return(
-      <View style={{flexDirection:"row", flex:1, height:160, marginTop: PADDING, marginLeft:PADDING, marginRight:PADDING, borderRadius:8, overflow:"hidden"}}>
-        <Image source={memo.imageSourceList[0]} style={{flex:1, height:160}} resizeMode="cover"/>
-        <View style={{width:PADDING/2}}/>
-        <Image source={memo.imageSourceList[1]} style={{flex:1, height:160}} resizeMode="cover"/>
+      <View style={{paddingTop: PADDING, paddingLeft:PADDING, paddingRight:PADDING}}>
+        <ImageGridComponent containerStyle={{height:160, width:Config.screen.width - PADDING*2}} imageSourceList={memo.imageSourceList}/>
       </View>
     )
   }
