@@ -30,7 +30,7 @@ const graphList: Array<GraphInfo> = [
     },
     avatarSourceList:[require("../../../resources/avatar/1.png")],
     createdAt: new Date(),
-    modifyAd: new Date(),
+    modifyAt: new Date(),
   },
   {
     title:"ダイエット記録",
@@ -53,7 +53,7 @@ const graphList: Array<GraphInfo> = [
     },
     avatarSourceList:[require("../../../resources/avatar/1.png")],
     createdAt: new Date(),
-    modifyAd: new Date(),
+    modifyAt: new Date(),
   },
   {
     title:"ダイエット記録",
@@ -76,7 +76,7 @@ const graphList: Array<GraphInfo> = [
     },
     avatarSourceList:[require("../../../resources/avatar/1.png")],
     createdAt: new Date(),
-    modifyAd: new Date(),
+    modifyAt: new Date(),
   },
 ]
 const chartConfig: ChartConfig = {
@@ -118,7 +118,6 @@ export default class GraphScreen extends Component {
   renderGraphHeader(graph: GraphInfo): JSX.Element{
     return(
       <View style={{width:"100%",height:40, flexDirection:"row", alignItems:"center", paddingLeft:PADDING, paddingTop:PADDING, paddingRight:PADDING}}>
-        <View style={{width:PADDING}} />
         <View style={{flex:1}}>
           <View style={{flexDirection:"row", alignItems:"center"}}>
             <Text style={{color: Config.color.textBlack, fontSize:Config.fontSize.big, fontWeight:"bold"}}>{graph.title}</Text>
@@ -128,7 +127,6 @@ export default class GraphScreen extends Component {
           </View>
           <Text style={{color: Config.color.iconGray, fontSize:Config.fontSize.regular}}>{graph.createdAt.getFullYear()}年{graph.createdAt.getMonth()+1}月{graph.createdAt.getDate()}日({this.getWodText(graph.createdAt)})</Text>
         </View>
-        <View style={{width:PADDING}}/>
       </View>
     )
   }
@@ -153,12 +151,10 @@ export default class GraphScreen extends Component {
   renderGraphBottom(graph: GraphInfo): JSX.Element{
     return(
       <View style={{flexDirection:"row", alignItems:"center", paddingLeft: PADDING, paddingBottom:PADDING, paddingRight:PADDING, marginTop: -PADDING/2}}>
-        <View style={{width:PADDING}}/>
         <Text style={{color: Config.color.iconGray, fontSize:Config.fontSize.regular}}>編集者</Text>
         {graph.avatarSourceList.length != 0 && this.renderGraphAvatar(graph)}
         <View style={{flex:1}}/>
-        <Text style={{color: Config.color.iconGray, fontSize:Config.fontSize.regular}}>{graph.createdAt.getFullYear()}年{graph.createdAt.getMonth()+1}月{graph.createdAt.getDate()}日({this.getWodText(graph.createdAt)})</Text>
-        <View style={{width:PADDING}}/>
+        <Text style={{color: Config.color.iconGray, fontSize:Config.fontSize.regular}}>{graph.modifyAt.getFullYear()}年{graph.modifyAt.getMonth()+1}月{graph.modifyAt.getDate()}日({this.getWodText(graph.modifyAt)})</Text>
       </View>
     )
   }
@@ -192,7 +188,7 @@ interface GraphInfo {
   data: LineChartData,
   avatarSourceList: Array<ImageSourcePropType>,
   createdAt: Date,
-  modifyAd: Date,
+  modifyAt: Date,
 }
 
 /*
