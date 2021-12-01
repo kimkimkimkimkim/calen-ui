@@ -19,6 +19,7 @@ export default class HomeScreen extends Component<Props, State> {
           centerComponent = {{text: "Home", style:{fontWeight: "bold", fontSize: Config.fontSize.header}}}
           rightComponent = {<Ionicons name="options-outline" size={Config.iconSize.header} color={Config.color.main}/>}
           leftComponent = {<Avatar rounded source={require("../../../resources/avatar/1.png")}/>}
+          containerStyle = {{ marginBottom:-0.5}}
         />
         <Tab.Navigator
           initialRouteName = "Calendar"

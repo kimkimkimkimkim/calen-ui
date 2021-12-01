@@ -5,7 +5,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen, FriendScreen, NotificationScreen, ChatScreen, TimelineScreen } from "./scripts/screens"
 import { Ionicons } from "@expo/vector-icons"
 import Config from "./scripts/config/Config"
+import { LogBox } from 'react-native';
 
+LogBox.ignoreAllLogs()
 const Tab = createBottomTabNavigator();
 
 export default class App extends Component {
