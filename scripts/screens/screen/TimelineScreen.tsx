@@ -93,6 +93,8 @@ export default class TimelineScreen extends Component {
           renderItem = {({item}) => <TimelineComponent timeline={item}/>}
           style={{flex:1,width:Config.screen.width, backgroundColor:Config.color.backgroundWhite}}
           ItemSeparatorComponent={() => <View style={{height:PADDING/2}}/>}
+          showsVerticalScrollIndicator = {false}
+          showsHorizontalScrollIndicator = {false}
         />
       </View>
     )

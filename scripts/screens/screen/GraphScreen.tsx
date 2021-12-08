@@ -110,6 +110,8 @@ export default class GraphScreen extends Component {
           }}
           style = {{width:Config.screen.width}}
           ItemSeparatorComponent={() => <View style={{height:PADDING}}/>}
+          showsVerticalScrollIndicator = {false}
+          showsHorizontalScrollIndicator = {false}
         />
       </View>
     )

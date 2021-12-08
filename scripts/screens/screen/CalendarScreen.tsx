@@ -155,6 +155,7 @@ export default class CalendarScreen extends Component<Props, State>{
           showsVerticalScrollIndicator={false}
           scrollEventThrottle={10}
           pagingEnabled
+          showsHorizontalScrollIndicator = {false}
         >
           {this.renderCalendar()}
         </ScrollView>

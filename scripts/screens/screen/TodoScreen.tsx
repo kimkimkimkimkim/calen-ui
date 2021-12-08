@@ -60,6 +60,8 @@ export default class TodoScreen extends Component {
               </View>
             )
           }}
+          showsVerticalScrollIndicator = {false}
+          showsHorizontalScrollIndicator = {false}
         />
       </View>
     )

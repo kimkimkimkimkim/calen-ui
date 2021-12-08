@@ -51,6 +51,8 @@ export default class AlbumScreen extends Component {
           renderItem = {({item}) => <AlbumComponent album={item}/>}
           style = {{width:Config.screen.width}}
           ItemSeparatorComponent={() => <View style={{height:PADDING}}/>}
+          showsVerticalScrollIndicator = {false}
+          showsHorizontalScrollIndicator = {false}
         />
       </View>
     )

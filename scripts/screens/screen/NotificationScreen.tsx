@@ -39,6 +39,8 @@ export default class NotificationScreen extends Component {
           renderItem = {({item}) => <NotificationComponent notificationType={item.notificationType} avatarImageSource={item.avatarImageSource} title={item.title} content={item.content}/>}
           style={{flex:1,width:Config.screen.width, backgroundColor:Config.color.backgroundWhite}}
           ItemSeparatorComponent={() => <View style={{height:4}}/>}
+          showsVerticalScrollIndicator = {false}
+          showsHorizontalScrollIndicator = {false}
         />
       </View>
     )

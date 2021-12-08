@@ -81,6 +81,8 @@ export default class MemoScreen extends Component {
           }}
           style={{width:Config.screen.width}}
           ItemSeparatorComponent={() => <View style={{height:PADDING}}/>}
+          showsVerticalScrollIndicator = {false}
+          showsHorizontalScrollIndicator = {false}
         />
       </View>
     )

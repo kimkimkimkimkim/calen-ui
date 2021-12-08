@@ -48,6 +48,8 @@ export default class ChatScreen extends Component {
           renderItem = {({item}) => <ChatListComponent name={item.name} imageSource={item.imageSource} lastMessage={item.lastMessage} lastMessageDateText={item.lastMessageDateText} badgeNum={item.badgeNum}/>}
           style={{flex:1,width:Config.screen.width, backgroundColor:Config.color.backgroundWhite}}
           ItemSeparatorComponent={() => <View style={{height:4}}/>}
+          showsVerticalScrollIndicator = {false}
+          showsHorizontalScrollIndicator = {false}
         />
       </View>
     )

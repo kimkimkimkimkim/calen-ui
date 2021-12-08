@@ -35,6 +35,8 @@ export default class GroupListScreen extends Component {
           renderItem = {({item}) => <FriendListComponent name={item.name} isGroup={item.isGroup} imageSource={item.imageSource}/>}
           style={{flex:1,width:Config.screen.width}}
           ItemSeparatorComponent={() => <View style={{height:PADDING}}/>}
+          showsVerticalScrollIndicator = {false}
+          showsHorizontalScrollIndicator = {false}
         />
       </View>
     )
