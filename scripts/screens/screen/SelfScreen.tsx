@@ -18,7 +18,7 @@ let timelineList: Array<TimelineInfo> = [
     likeNum: 0,
     replyNum: 2,
     isLike: false,
-    isBookmark: false,
+    isBookmark: true,
   },
   {
     title: "予定2",

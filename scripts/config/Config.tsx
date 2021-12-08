@@ -35,7 +35,7 @@ export default class Config {
 
   static iconSize = {
     header: 24,
-    timeline: 20,
+    timeline: 18,
   }
 
   // 画面サイズ
@@ -43,5 +43,11 @@ export default class Config {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
     scale: Dimensions.get('window').scale,
+  }
+
+  // ユニークキー
+  static GetUniqueKey(): string {
+    let strong = 10000;
+    return new Date().getTime().toString(16) + Math.floor(strong * Math.random()).toString(16) + Math.floor(strong * Math.random()).toString(16);
   }
 }

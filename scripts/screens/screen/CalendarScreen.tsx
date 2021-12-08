@@ -188,6 +188,7 @@ export default class CalendarScreen extends Component<Props, State>{
     return(
       <View
         style = {{width:Config.screen.width, height:this.state.viewPortHeight}}
+        key = {Config.GetUniqueKey()}
       >
         <View
           style = {{
@@ -195,6 +196,7 @@ export default class CalendarScreen extends Component<Props, State>{
             margin:CALENDAR_MARGIN, 
             backgroundColor:Config.color.backgroundWhite, 
             borderRadius:12,
+            /*
             shadowColor: "#AAA",
             shadowOffset: {
               width: 0,
@@ -203,6 +205,7 @@ export default class CalendarScreen extends Component<Props, State>{
             shadowOpacity: 0.25,
             shadowRadius: 3.84,
             elevation: 5,
+            */
           }}
         >
           {this.renderCalendarHeader(date)}
@@ -234,7 +237,7 @@ export default class CalendarScreen extends Component<Props, State>{
       <View style = {{flexDirection:"row", alignItems:"center", width:"100%", height:CALENDAR_WOD_HEIGHT}}>
         {wodList.map(wod => {
           return(
-            <View style={{flex:1, justifyContent:"center", alignItems:"center"}}>
+            <View style={{flex:1, justifyContent:"center", alignItems:"center"}} key={Config.GetUniqueKey()}>
               <Text style={{fontSize:Config.fontSize.regular, color:this.getWodTextColor(wod)}}>{this.getWodText(wod)}</Text>
             </View>
           )
@@ -249,10 +252,10 @@ export default class CalendarScreen extends Component<Props, State>{
     var height = containerHeight/(dateList.length / 7);
     var width = (Config.screen.width - (CALENDAR_MARGIN*2))/7 - 0.01;
     return(
-      <View style = {{flex:1, flexDirection:"row", flexWrap:"wrap"}}>
+      <View style = {{flex:1, flexDirection:"row", flexWrap:"wrap"}} key = {Config.GetUniqueKey()}>
         {dateList.map(d => {
           return(
-            <View style = {{width:width, height:height, alignItems:"center", borderTopWidth:Config.width.border, borderColor:Config.color.borderGray}}>
+            <View style = {{width:width, height:height, alignItems:"center", borderTopWidth:Config.width.border, borderColor:Config.color.borderGray}} key={Config.GetUniqueKey()}>
               <Text style={{fontSize:Config.fontSize.regular, color: this.getDateTextColor(d, date), marginTop:4}}>{d.getDate()}</Text>
               {this.renderEvent(d)}
             </View>
@@ -267,7 +270,7 @@ export default class CalendarScreen extends Component<Props, State>{
       .map(e => {
         let rgb = this.getRgbFromHex(e.color);
         return (
-          <View style={{width:"100%", height: 18}}>
+          <View style={{width:"100%", height: 18}} key = {Config.GetUniqueKey()}>
             <View style={{flex:1, margin:2, backgroundColor: "rgba("+rgb[0]+","+rgb[1]+","+rgb[2]+",0.05)", borderRadius:2, justifyContent:"center", alignItems:"center"}}>
               <Text style={{fontSize: Config.fontSize.small, color: e.color}}>{e.title}</Text>
             </View>

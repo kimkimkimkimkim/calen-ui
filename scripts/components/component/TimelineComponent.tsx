@@ -7,7 +7,7 @@ import { Props, State} from "../interface/TimelineComponentInterface"
 import { TimelineInfo } from "../../data"
 import ImageGridComponent from "./ImageGridComponent";
 
-const PADDING = 14;
+const PADDING = 16;
 
 export default class TimelineComponent extends Component<Props, State> {
   render(){
@@ -67,6 +67,7 @@ export default class TimelineComponent extends Component<Props, State> {
     )
   }
 
+  /*
   renderTimelineBottom(timeline: TimelineInfo): JSX.Element{
     return(
       <View style={{width:"100%", padding: PADDING, flexDirection:"row", alignItems:"center"}}>
@@ -88,6 +89,20 @@ export default class TimelineComponent extends Component<Props, State> {
         <View style={{flex:1, flexDirection:"row-reverse", alignItems:"center"}}>
           <Ionicons name={timeline.isBookmark ? "bookmark" : "bookmark-outline"} color={timeline.isBookmark ? Config.color.main : Config.color.iconGray} size={Config.iconSize.timeline}/>
         </View>
+      </View>
+    )
+  }
+  */
+  renderTimelineBottom(timeline: TimelineInfo): JSX.Element{
+    return(
+      <View style={{width:"100%", padding: PADDING, paddingTop: PADDING/2 + 4, flexDirection:"row", alignItems:"center"}}>
+        <Ionicons name="chatbubble-outline" color={Config.color.iconGray} size={Config.iconSize.timeline}/>
+        <View style={{width:PADDING}}/>
+        <Ionicons name={timeline.isLike ?"heart-sharp" : "heart-outline"} color={timeline.isLike ? Config.color.main : Config.color.iconGray} size={Config.iconSize.timeline}/>
+        <View style={{width:PADDING}}/>
+        <Ionicons name="person-add-outline" color={Config.color.iconGray} size={Config.iconSize.timeline}/>
+        <View style={{flex:1}}/>
+        <Ionicons name={timeline.isBookmark ? "bookmark" : "bookmark-outline"} color={timeline.isBookmark ? Config.color.main : Config.color.iconGray} size={Config.iconSize.timeline}/>
       </View>
     )
   }
