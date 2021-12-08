@@ -1,4 +1,4 @@
-import React, { Component, memo } from "react";
+import React, { Component } from "react";
 import { View } from "react-native"
 import { Props, State } from "../interface/HomeScreenInterface";
 import Config from "../../config/Config"
@@ -6,18 +6,32 @@ import { SelfScreen, CalendarScreen, TodoScreen, MemoScreen, GraphScreen, AlbumS
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { Header, Avatar } from "react-native-elements"
 import { Ionicons } from "@expo/vector-icons"
+import { connect } from "react-redux";
+import { mapDispatchToProps, mapStateToProps } from "../../redux/interface";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Tab = createMaterialTopTabNavigator();
 
-export default class HomeScreen extends Component<Props, State> {
-
+class HomeScreen extends Component<Props, State> {
   render(){
     return(
       <View style={{flex:1}}>
         <Header 
           backgroundColor = {Config.color.white}
           centerComponent = {{text: "Home", style:{fontWeight: "bold", fontSize: Config.fontSize.header}}}
-          rightComponent = {<Ionicons name="options-outline" size={Config.iconSize.header} color={Config.color.main}/>}
+          rightComponent = {(
+            <TouchableOpacity
+              onPress={() => {
+                if(this.props.uiType == "Simple"){
+                  this.props.setUIType("BgGray")
+                }else{
+                  this.props.setUIType("Simple")
+                }
+              }}
+            >
+              <Ionicons name="options-outline" size={Config.iconSize.header} color={Config.color.main}/>
+            </TouchableOpacity>
+          )}
           leftComponent = {<Avatar rounded source={require("../../../resources/avatar/1.png")}/>}
           containerStyle = {{ marginBottom:-0.5}}
         />
@@ -78,3 +92,5 @@ export default class HomeScreen extends Component<Props, State> {
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

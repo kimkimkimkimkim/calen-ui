@@ -3,6 +3,8 @@ import { View, FlatList} from "react-native"
 import Config from "../../config/Config"
 import { TimelineComponent } from "../../components"
 import { TimelineInfo } from "../../data"
+import { connect } from "react-redux";
+import { IDispatchToProps, IStateToProps, mapDispatchToProps, mapStateToProps } from "../../redux/interface";
 
 const PADDING = 14;
 
@@ -74,11 +76,12 @@ let timelineList: Array<TimelineInfo> = [
   },
 ]
 
-export default class SelfScreen extends Component {
+class SelfScreen extends Component<IStateToProps & IDispatchToProps> {
   render(){
+    let backgroundColor = this.props.uiType == "Simple" ? Config.color.backgroundWhite : Config.color.backgroundGray;
     return(
       <View
-        style = {{flex:1, justifyContent:"center", alignItems:"center", backgroundColor: Config.color.backgroundWhite}}
+        style = {{flex:1, justifyContent:"center", alignItems:"center", backgroundColor}}
       >
         <FlatList 
           data = {timelineList}
@@ -92,3 +95,4 @@ export default class SelfScreen extends Component {
     )
   }
 }
+export default connect(mapStateToProps, mapDispatchToProps)(SelfScreen)

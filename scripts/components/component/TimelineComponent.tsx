@@ -3,16 +3,22 @@ import { View, Text, Image } from "react-native"
 import Config from "../../config/Config"
 import { Avatar } from "react-native-elements"
 import { Ionicons } from "@expo/vector-icons"
-import { Props, State} from "../interface/TimelineComponentInterface"
+import { Props, State, DefaultProps} from "../interface/TimelineComponentInterface"
 import { TimelineInfo } from "../../data"
 import ImageGridComponent from "./ImageGridComponent";
+import { connect } from "react-redux";
+import { mapDispatchToProps, mapStateToProps } from "../../redux/interface";
 
 const PADDING = 16;
 
-export default class TimelineComponent extends Component<Props, State> {
+class TimelineComponent extends Component<Props, State> {
+  static defaultProps: DefaultProps = {
+  }
+
   render(){
+    let backgroundColor = this.getBackgroundColor();
     return(
-      <View style={{width:"100%"}}>
+      <View style={{width:"100%", backgroundColor}}>
         {this.renderTimelineHeader(this.props.timeline)}
         {this.props.timeline.comment != "" && this.renderTimelineComment(this.props.timeline)}
         {this.props.timeline.imageSourceList.length != 0 && this.renderTimelineImage(this.props.timeline)}
@@ -21,15 +27,15 @@ export default class TimelineComponent extends Component<Props, State> {
     )
   }
 
-  renderTimeline(timeline: TimelineInfo): JSX.Element{
-    return(
-      <View style={{width:"100%"}}>
-        {this.renderTimelineHeader(timeline)}
-        {timeline.comment != "" && this.renderTimelineComment(timeline)}
-        {timeline.imageSourceList.length != 0 && this.renderTimelineImage(timeline)}
-        {this.renderTimelineBottom(timeline)}
-      </View>
-    )
+  getBackgroundColor(): string {
+    switch(this.props.uiType){
+      case "Simple":
+        return "transparent";
+      case "BgGray":
+        return "white";
+      default:
+        return "white";
+    }
   }
 
   renderTimelineHeader(timeline: TimelineInfo): JSX.Element{
@@ -67,8 +73,18 @@ export default class TimelineComponent extends Component<Props, State> {
     )
   }
 
-  /*
-  renderTimelineBottom(timeline: TimelineInfo): JSX.Element{
+  renderTimelineBottom(timeline: TimelineInfo): JSX.Element {
+    switch(this.props.uiType){
+      case "Simple":
+        return this.renderSimpleTimelineBottom(timeline);
+      case "BgGray":
+        return this.renderBgGrayTimelineBottom(timeline);
+      default:
+        return this.renderSimpleTimelineBottom(timeline);
+    }
+  }
+
+  renderBgGrayTimelineBottom(timeline: TimelineInfo): JSX.Element{
     return(
       <View style={{width:"100%", padding: PADDING, flexDirection:"row", alignItems:"center"}}>
         <View style={{flex:1, flexDirection:"row", alignItems:"center"}}>
@@ -92,8 +108,8 @@ export default class TimelineComponent extends Component<Props, State> {
       </View>
     )
   }
-  */
-  renderTimelineBottom(timeline: TimelineInfo): JSX.Element{
+  
+  renderSimpleTimelineBottom(timeline: TimelineInfo): JSX.Element{
     return(
       <View style={{width:"100%", padding: PADDING, paddingTop: PADDING/2 + 4, flexDirection:"row", alignItems:"center"}}>
         <Ionicons name="chatbubble-outline" color={Config.color.iconGray} size={Config.iconSize.timeline}/>
@@ -112,3 +128,4 @@ export default class TimelineComponent extends Component<Props, State> {
     return list[date.getDay()];
   }
 }
+export default connect(mapStateToProps, mapDispatchToProps)(TimelineComponent)

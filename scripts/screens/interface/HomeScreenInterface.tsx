@@ -1,5 +1,6 @@
 import { NavigationHelpers, ParamListBase } from "@react-navigation/core";
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { IDispatchToProps, IStateToProps } from "../../redux/interface";
 
 // navigation.navigate()で渡されるProps
 interface NavigationProps {
@@ -20,6 +21,6 @@ interface IProps {
 interface IState{
 }
 
-export type Props = IProps & NativeStackNavigationOptions;
+export type Props = IProps & NativeStackNavigationOptions & IStateToProps & IDispatchToProps;
 export type State = IState & NavigationPropsForState;
 export type HomeScreenNavigationRequest = NavigationProps & NavigationPropsForState;
