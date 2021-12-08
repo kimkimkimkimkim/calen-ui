@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, ImageSourcePropType } from "react-native"
+import { View, FlatList } from "react-native"
 import Config from "../../config/Config"
-import { Ionicons } from "@expo/vector-icons"
-import { Avatar } from "react-native-elements"
+import { TodoInfo } from "../../data";
+import { TodoComponent } from "../../components";
 
-const PADDING = 12;
 const todoList: Array<TodoInfo> = [
   {
     title: "Todo1",
@@ -47,30 +46,11 @@ export default class TodoScreen extends Component {
         <FlatList
           style={{width:Config.screen.width}}
           data={todoList}
-          renderItem={({item}) => {
-            return(
-              <View style={{flexDirection:"row", alignItems:"center", padding: PADDING}}>
-                <Avatar rounded source={item.avatarSource} size={32}/>
-                <View style={{width:PADDING}}/>
-                <Text style={{color:Config.color.textBlack, fontSize:Config.fontSize.big}}>{item.title}</Text>
-                <View style={{flex:1}}/>
-                <Text style={{color:Config.color.iconGray, fontSize:Config.fontSize.small}}>{item.deadlineDate.getFullYear()}.{item.deadlineDate.getMonth()+1}.{item.deadlineDate.getDate()} {item.deadlineDate.getHours()}:{item.deadlineDate.getMinutes()}</Text>
-                <View style={{width:PADDING}}/>
-                <Ionicons name={item.isDone ? "checkbox-outline" : "square-outline"} color={item.isDone ? Config.color.main : Config.color.iconGray} size={24}/>
-              </View>
-            )
-          }}
+          renderItem={({item}) => <TodoComponent todo = {item}/>}
           showsVerticalScrollIndicator = {false}
           showsHorizontalScrollIndicator = {false}
         />
       </View>
     )
   }
-}
-
-interface TodoInfo {
-  title: string,
-  isDone: boolean, 
-  deadlineDate: Date,
-  avatarSource: ImageSourcePropType,
 }
