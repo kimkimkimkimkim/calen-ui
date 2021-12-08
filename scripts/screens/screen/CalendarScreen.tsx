@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { connect} from "react-redux"
 import { Props, State } from "../interface/CalendarScreenInterface";
 import { View } from "react-native"
 import Config from "../../config/Config"
 import { EventInfo } from "../../data";
 import { CalendarComponent } from "../../components";
+import { mapDispatchToProps, mapStateToProps } from "../../redux/interface";
 
 const eventList: Array<EventInfo> = [
   {
@@ -133,15 +135,14 @@ const eventList: Array<EventInfo> = [
   },
 ]
 
-export default class CalendarScreen extends Component<Props, State>{
-
+class CalendarScreen extends Component<Props, State>{
   render(): JSX.Element{
     return(
-      <View
-        style = {{flex:1, justifyContent:"center", alignItems:"center", backgroundColor: Config.color.backgroundWhite}}
-      >
+      <View style = {{flex:1, justifyContent:"center", alignItems:"center", backgroundColor: Config.color.backgroundWhite}}>
         <CalendarComponent eventList = {eventList}/>
       </View>
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarScreen)

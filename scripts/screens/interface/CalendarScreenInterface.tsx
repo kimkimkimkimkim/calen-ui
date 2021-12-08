@@ -1,4 +1,5 @@
 import { NavigationHelpers, ParamListBase } from "@react-navigation/core";
+import { IDispatchToProps, IStateToProps } from "../../redux/interface";
 
 // navigation.navigate()で渡されるProps
 interface NavigationProps {
@@ -21,6 +22,6 @@ interface IState{
   viewPortHeight: number,
 }
 
-export type Props = IProps;
+export type Props = IProps & IStateToProps & IDispatchToProps;
 export type State = IState & NavigationPropsForState;
 export type CalendarScreenNavigationRequest = NavigationProps & NavigationPropsForState;

@@ -1,17 +1,31 @@
 import React, { Component } from "react";
-import { StyleSheet } from "react-native"
+import { connect, Provider } from "react-redux";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen, FriendScreen, NotificationScreen, ChatScreen, TimelineScreen } from "./scripts/screens"
 import { Ionicons } from "@expo/vector-icons"
 import Config from "./scripts/config/Config"
 import { LogBox } from 'react-native';
+import store from "./scripts/redux/store";
+import { IDispatchToProps, IStateToProps, mapDispatchToProps, mapStateToProps } from "./scripts/redux/interface";
 
 LogBox.ignoreAllLogs()
 const Tab = createBottomTabNavigator();
 
-export default class App extends Component {
+export default class AppContainer extends Component {
   render(){
+    return(
+      <Provider store = {store}>
+        <ConnectedApp />
+      </Provider>
+    )
+  }
+}
+
+class App extends Component<IStateToProps & IDispatchToProps>{
+  render(){
+    this.props.syncReduxData();
+
     return(
       <NavigationContainer>
         <Tab.Navigator
@@ -76,11 +90,4 @@ export default class App extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App)
