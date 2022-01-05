@@ -19,6 +19,7 @@ interface IProps {
 
 // クラス内で使用するState
 interface IState{
+  isModalShow: boolean,
 }
 
 export type Props = IProps & NativeStackNavigationOptions & IStateToProps & IDispatchToProps;

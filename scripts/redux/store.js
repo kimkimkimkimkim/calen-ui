@@ -7,7 +7,7 @@ import rootReducer from "./rootReducer"
 
 // 永続化の設定
 const persistConfig = {
-  key: 'calen', // Storageに保存されるキー名を指定する
+  key: 'calen-ui', // Storageに保存されるキー名を指定する
   storage: AsyncStorage, // 保存先としてlocalStorageがここで設定される
   //whitelist: ['todos'] // Stateは`todos`のみStorageに保存する
   // blacklist: ['visibilityFilter'] // `visibilityFilter`は保存しない
